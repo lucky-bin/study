@@ -20,6 +20,8 @@ public class ApiConsumerConfiguration {
 
 		// 连接注册中心配置
 		RegistryConfig registry = new RegistryConfig("127.0.0.1:2181", "zookeeper");
+		// 设置临时节点
+		registry.setDynamic(Boolean.FALSE);
 
 		// 注意：ReferenceConfig为重对象，内部封装了与注册中心的连接，以及与服务提供方的连接
 		// 引用远程服务

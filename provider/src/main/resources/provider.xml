@@ -11,7 +11,7 @@
     <dubbo:application name="hello-world-app"  />
 
     <!--dynamic  默认 true 持久节点     false  临时节点-->
-    <dubbo:registry address="zookeeper://127.0.0.1:2181?dynamic=false" />
+    <dubbo:registry address="zookeeper://127.0.0.1:2181" dynamic="false"/>
 
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="40880" />

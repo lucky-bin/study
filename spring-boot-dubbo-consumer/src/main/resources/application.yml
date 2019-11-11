@@ -10,7 +10,9 @@ dubbo:
   application:
     name: consumer-service-app1
   registry:
-    address: zookeeper://127.0.0.1:2181?dynamic=false
+    address: zookeeper://127.0.0.1:2181
+    # 设置临时节点
+    dynamic: false
   consumer: 
     timeout: 3000
 

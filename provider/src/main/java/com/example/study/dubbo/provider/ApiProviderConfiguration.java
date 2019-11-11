@@ -24,6 +24,7 @@ public class ApiProviderConfiguration {
 
 		// 连接注册中心配置。 请学习RegistryConfig的API
 		RegistryConfig registry = new RegistryConfig("127.0.0.1:2181", "zookeeper");
+		registry.setDynamic(Boolean.FALSE);
 
 		// 服务提供者协议配置
 		ProtocolConfig protocol = new ProtocolConfig();

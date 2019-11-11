@@ -6,8 +6,9 @@ dubbo:
   application:
     name: service-app1
   registry:
-    # dynamic  默认 true 持久节点     false  临时节点
-    address: zookeeper://127.0.0.1:2181?dynamic=false
+    address: zookeeper://127.0.0.1:2181
+      # 设置临时节点
+      dynamic: false
   protocol:
     name: dubbo
     port: 20880
