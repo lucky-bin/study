@@ -16,10 +16,10 @@
     <dubbo:protocol name="dubbo" port="40880" />
 
     <!-- 声明需要暴露的服务接口 -->
-    <dubbo:service interface="edu.dongnao.study.dubbo.DemoService" ref="demoService" retries="2" cluster="failsafe" >
+    <dubbo:service interface="com.example.study.dubbo.DemoService" ref="demoService" retries="2" cluster="failsafe" >
         <dubbo:method name="sayGood" loadbalance="roundrobin"></dubbo:method>
     </dubbo:service>
 
     <!-- 和本地bean一样实现服务 -->
-    <bean id="demoService" class="edu.dongnao.study.dubbo.provider.DemoServiceImpl" />
+    <bean id="demoService" class="com.example.study.dubbo.provider.DemoServiceImpl" />
 </beans>

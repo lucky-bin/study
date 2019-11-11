@@ -11,6 +11,6 @@ dubbo:
     name: dubbo
     port: 20880
   scan:
-    base-packages: edu.dongnao.study.dubbo.provider
+    base-packages: com.example.study.dubbo.provider
 server:
   port: 9093
