@@ -10,7 +10,7 @@ dubbo:
   application:
     name: consumer-service-app1
   registry:
-    address: zookeeper://127.0.0.1:2181
+    address: zookeeper://127.0.0.1:2181?dynamic=false
   consumer: 
     timeout: 3000
 
