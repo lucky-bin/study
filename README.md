@@ -45,6 +45,45 @@ rpc版本,服务接口路径,服务版本号,服务方法名,参数描述符,参
 |MergeableCluster|聚合集群，将集群中的调用结果聚合起来返回结果|
 |RegistryAwareCluster|先通过"default"key查询来自本地注册的invoker，若没有查到，则返回第一个可用的invoker，若都不可用，抛出异常|
 
+## **服务治理**
+
+## **并发控制**
+##### 属性
+
+```xml
+<dubbo:service interface="xxx.xxx.xxx" executes="10" actives="10">
+    <dubbo:method name="methodName" executes="10" actives="10"></dubbo:method>
+</dubbo:service>
+<dubbo:provider protocol="dubbo" accepts="10" />
+<dubbo:protocol name = "dubbo" accepts="10" />
+<dubbo:reference interface="xxx.xxx.xxx" connections="10" />
+<dubbo:reference interface="xxx.xxx.xxx" connections="10" />
+```
+|关键字|说明|
+|---|---|
+|executes|方法级占用线程数控制(方法、接口)|
+|actives|方法级占用连接数控制(方法、接口)|
+|loadbalance|负载方式(方法、接口)|
+|accepts|限制服务端接受的连接数(服务)|
+|connections|客户端连接控制(接口)|
+
+##### 粘滞连接
+````
+用于有状态服务,尽可能让客户端总是向同一提供者发起调用
+粘滞连接会自动开启延迟连接
+````
+```xml
+<dubbo:reference id="xxx" interface="xxx.xxx.xxx" sticky="true">
+    <dubbo:method name="methodName" sticky="true"></dubbo:method>
+</dubbo:reference>
+```
+##### 延迟连接
+````
+减少长连接数量。当有调用发起时，在创建长连接。只对使用长连接的dubbo协议有效
+````
+```xml
+<dubbo:protocol name = "dubbo" lazy="true" />
+```
 ## **Dubbo SPI**
 
 
