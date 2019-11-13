@@ -10,6 +10,9 @@
     <!-- 提供方应用信息，用于计算依赖关系 -->
     <dubbo:application name="hello-world-app"  />
 
+    <!--将配置配置到配置中心，  namespace 为 服务名-->
+    <!--<dubbo:config-center address="zookeeper://127.0.0.1:2181" namespace="hello-world-app"/>-->
+
     <!--dynamic  默认 true 持久节点     false  临时节点-->
     <dubbo:registry address="zookeeper://127.0.0.1:2181" dynamic="false"/>
 

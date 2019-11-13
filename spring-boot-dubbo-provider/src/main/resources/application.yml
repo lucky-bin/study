@@ -12,6 +12,10 @@ dubbo:
   protocol:
     name: dubbo
     port: 20880
+  # 实现配置中心集中化配置
+#  config-center:
+#    namespace: service-app1
+#    address: zookeeper://127.0.0.1:2181
   scan:
     base-packages: com.example.study.dubbo.provider
 server:

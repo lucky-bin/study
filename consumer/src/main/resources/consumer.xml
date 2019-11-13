@@ -6,7 +6,10 @@
             http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
             http://dubbo.apache.org/schema/dubbo        
             http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
- 
+
+    <!--将配置配置到配置中心，  namespace 为 服务名-->
+    <!--<dubbo:config-center address="zookeeper://127.0.0.1:2181" namespace="consumer-of-helloworld-app"/>-->
+
     <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
     <dubbo:application name="consumer-of-helloworld-app"  />
     <!--dynamic  默认 true 持久节点     false  临时节点-->

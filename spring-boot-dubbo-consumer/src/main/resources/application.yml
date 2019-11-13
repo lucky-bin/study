@@ -15,4 +15,8 @@ dubbo:
     dynamic: false
   consumer: 
     timeout: 3000
+  # 实现配置中心集中化配置
+#  config-center:
+#    namespace: consumer-service-app1
+#    address: zookeeper://127.0.0.1:2181
 

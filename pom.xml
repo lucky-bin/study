@@ -46,6 +46,7 @@
     </dependencies>
 
     <modules>
+        <module>dubbo-apply</module>
         <module>consumer</module>
         <module>provider</module>
         <module>spring-boot-dubbo-provider</module>

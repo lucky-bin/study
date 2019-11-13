@@ -1,0 +1,1 @@
+hystrix=com.example.study.apply.hystrix.DubboHystrixFilter

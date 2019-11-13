@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.example</groupId>
+		<artifactId>study</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+	<groupId>com.example.study</groupId>
+  	<artifactId>dubbo-apply</artifactId>
+  	<version>0.0.1-SNAPSHOT</version>
+  	<packaging>pom</packaging>
+  
+	<modules>
+		<module>dubbo-facade</module>
+		<module>dubbo-provider</module>
+		<module>dubbo-consumer</module>
+	</modules>
+
+  	<dependencies>
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo-spring-boot-starter</artifactId>
+			<version>2.7.4.1</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.dubbo/dubbo -->
+		<dependency>
+			<groupId>org.apache.dubbo</groupId>
+			<artifactId>dubbo</artifactId>
+			<version>2.7.4.1</version>
+		</dependency>
+
+	    <!-- thrift依赖 -->
+	    <dependency>
+		    <groupId>org.apache.thrift</groupId>
+		    <artifactId>libthrift</artifactId>
+		    <version>0.8.0</version>
+		</dependency>
+	  	<!-- thrift依赖 -->
+
+		<dependency>
+			<groupId>io.netty</groupId>
+			<artifactId>netty-all</artifactId>
+			<version>4.1.32.Final</version>
+		</dependency>
+
+		<!-- 默认使用的是第三方zookeeper客户端 curator -->
+		<dependency>
+			<groupId>org.apache.curator</groupId>
+			<artifactId>curator-recipes</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+
+	  	<!-- http 依赖 -->
+	  	<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-core</artifactId>
+			<version>8.5.40</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-el</artifactId>
+			<version>8.5.40</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-websocket</artifactId>
+			<version>8.5.40</version>
+		</dependency>
+	  	<!-- http 依赖 -->
+	  	
+	    <dependency>
+	      <groupId>junit</groupId>
+	      <artifactId>junit</artifactId>
+	      <version>4.2</version>
+	      <scope>test</scope>
+	    </dependency>
+  		
+  	</dependencies>
+</project>
