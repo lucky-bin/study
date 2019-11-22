@@ -1,4 +1,4 @@
-package com.example.study.Performance;
+package com.example.study.performance;
 
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.atomic.LongAccumulator;
