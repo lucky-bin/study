@@ -29,3 +29,7 @@ build/
 
 ### VS Code ###
 .vscode/
+doc/
+src/main/java/com/example/study/netty/
+src/main/resources/
+src/test/
