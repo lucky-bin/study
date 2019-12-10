@@ -1,4 +1,4 @@
-package com.example.study.nio;
+package com.example.study.nio.v3;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -8,6 +8,7 @@ import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.locks.LockSupport;
 
 public class NIOClient {
 
@@ -47,6 +48,8 @@ public class NIOClient {
                     byte[] bytes = new byte[byteBuffer.remaining()];
                     byteBuffer.get(bytes);
                     System.out.println(new String(bytes, "utf-8"));
+                    LockSupport.parkNanos(10*1000*1000*1000);
+                    selectionKey.interestOps(SelectionKey.OP_WRITE);
                 } else if (selectionKey.isWritable()) {
                     ByteBuffer byteBuffer = (ByteBuffer) selectionKey.attachment();
                     byteBuffer.clear();
