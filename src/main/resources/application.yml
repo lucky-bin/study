@@ -1,0 +1,25 @@
+spring:
+  rabbitmq:
+    addresses: 192.168.204.129
+    port: 5672
+    user: admin
+    password: admin
+    listener:
+      simple:
+        acknowledge-mode: manual
+        prefetch: 1
+      direct:
+        acknowledge-mode: manual
+          prefetch: 1
+    publisher-returns:  true   #开启spring中的消息退回发布者支持
+    publisher-confirm-type: correlated
+    #连接、通道缓存配置，高并发访问MQ时才需要配置。
+    cache:
+      channel:
+        checkout-timeout: 0 #如果已达到缓存大小，则等待获取通道的时间。如果为0，则始终创建一个新通道。
+        size: 100   #要保留在缓存中的通道数。当checkout-timeout>为0时，表示每个连接的最大通道数。
+      connection:
+      #mode: connection  #连接工厂缓存模式 ,默认是 channel
+      #size: 10    #缓存的连接数量，仅在mode 为 connection时有效
+    template:
+      mandatory: true    #全局默认设置为：消息不可路由强制退回   这个基本没什么用处，因为还需要为RabbitTemplate设置退回回调才行（可以在那里一并设置）
