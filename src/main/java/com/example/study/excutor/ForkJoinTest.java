@@ -124,7 +124,7 @@ public class ForkJoinTest {
 
     public static String doRequest(String url, int index) {
         //模拟网络请求
-        return (index + "Kody ... test ... " + url + "\n");
+        return (index + "Internet ... test ... " + url + "\n");
     }
 
 
