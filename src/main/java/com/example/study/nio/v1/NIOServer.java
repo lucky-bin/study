@@ -26,7 +26,7 @@ public class NIOServer {
         while (true){
             // 获取新的TCP链接通道
             SocketChannel socketChannel = serverSocketChannel.accept();
-            // 如果没有链接简历,就从未断开的链接里面去进行获取
+            // 如果没有链接建立,就从未断开的链接里面去进行获取
             if (socketChannel != null) {
                 System.out.println("收到新连接 : " + socketChannel.getRemoteAddress());
                 socketChannel.configureBlocking(false);
