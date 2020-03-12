@@ -108,7 +108,7 @@ ExtensionLoader.getExtenSionLoader(ProxyFactory.class).getExtension(proxyName);
 **自适应扩展点应用**
 ```text
 需要进行自适应的类或方法设置 @Adaptive
-1. 当@Adaptive 在雷伤，不会生成代理类
+1. 当@Adaptive 在类上，不会生成代理类
 2.注解在方法(接口方法)上是，DUbbo则会为改方法生成代理逻辑
 ```
 
