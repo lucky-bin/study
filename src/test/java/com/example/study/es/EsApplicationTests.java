@@ -31,5 +31,7 @@ class EsApplicationTests {
         esService.metricsAggregations();
         System.out.println("桶聚合");
         esService.bulkAggregations();
+        System.out.println("封装的折叠查询");
+        esService.testCollapse();
     }
 }

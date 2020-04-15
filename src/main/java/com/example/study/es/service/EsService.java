@@ -1,5 +1,10 @@
 package com.example.study.es.service;
 
+import com.example.study.es.client.CollapseEsClient;
+import com.example.study.es.client.EsClientBulider;
+import com.example.study.es.domain.CollapseResult;
+import com.example.study.es.domain.Result;
+import com.example.study.es.domain.TwoCollApseResult;
 import com.example.study.es.entity.Employee;
 import com.example.study.es.repository.EmployeeRepository;
 import org.elasticsearch.action.search.SearchRequest;
@@ -31,6 +36,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.core.ElasticsearchRestTemplate;
 import org.springframework.data.elasticsearch.core.SearchHit;
 import org.springframework.data.elasticsearch.core.SearchHits;
+import org.springframework.data.elasticsearch.core.convert.ElasticsearchConverter;
 import org.springframework.data.elasticsearch.core.mapping.IndexCoordinates;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQuery;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
@@ -58,6 +64,8 @@ public class EsService {
     private ElasticsearchRestTemplate template;
     @Autowired
     private RestHighLevelClient restHighLevelClient;
+    @Autowired
+    private ElasticsearchConverter elasticsearchConverter;
 
     /**
      * spring 封装的一些基于id的增删改查
@@ -372,6 +380,34 @@ public class EsService {
                     }
                 }
             }
+        }
+    }
+
+    /**
+     * 自己封装的折叠查询
+     */
+    public void testCollapse(){
+        CollapseBuilder collapseBuilder = new CollapseBuilder("name.keyword")
+                .setInnerHits(
+                        new InnerHitBuilder("testName").setInnerCollapse(
+                                new CollapseBuilder("salary")
+                        ).setSize(10)
+                );
+        CollapseEsClient<String, Double, Employee> client = EsClientBulider.collapse(String.class, Double.class, Employee.class)
+                .client(restHighLevelClient)
+                .indices("employee1")
+                .elasticsearchConverter(elasticsearchConverter)
+                .query(QueryBuilders.matchAllQuery())
+                .collapse(collapseBuilder)
+                .size(10);
+        List<Result<Employee>> collapseResult = client.execute(Employee.class);
+        for (Result<Employee> employeeResult : collapseResult) {
+            CollapseResult<String, Double, Employee> result = (CollapseResult<String, Double, Employee>) employeeResult;
+            List<String> value = result.getValue();
+            value.stream().forEach(System.out::println);
+            // 二级折叠查询结果
+            Map<String, List<TwoCollApseResult<Double, Employee>>> twoCollapseResult = result.getCollapse();
+            System.out.println(twoCollapseResult);
         }
     }
 }

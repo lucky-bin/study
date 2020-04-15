@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 
 @Data
 @Accessors(chain = true)
-@Document(indexName = "employee", createIndex = false)
+@Document(indexName = "employee1", createIndex = false)
 public class Employee {
 
     @Id
